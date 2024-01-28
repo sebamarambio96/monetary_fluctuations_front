@@ -33,7 +33,7 @@ const rows = [
     createData(5, "Gingerbread", 5),
 ];
 
-export default function BasicTable() {
+export default function TableCurrency() {
 
     return (
         <TableContainer component={Paper}>
