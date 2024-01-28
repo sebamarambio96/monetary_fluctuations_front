@@ -7,6 +7,7 @@ import TableCurrency from "../components/tables/TableCurrency";
 import LineChart from "../components/charts/LineChart";
 import { useCurrencyContext } from "../../context/currencyContext";
 import { dataTableFiller } from "../../utils/table";
+import { useSnackbar } from "notistack";
 
 const DashboardContainer = () => {
     const { dataCurrency } = useCurrencyContext();
@@ -14,6 +15,7 @@ const DashboardContainer = () => {
     const [dataChartFiltered, setDataChartFiltered] = useState();
     const [initialDate, setInitialDate] = useState(getDefaultStartDate());
     const [endDate, setEndDate] = useState(getCurrentDate());
+    const { enqueueSnackbar } = useSnackbar();
 
     useEffect(() => {
         // If it hasn't been set, it doesn't run to avoid errors the first time.
@@ -33,9 +35,21 @@ const DashboardContainer = () => {
 
     const handleInitialDateChange = (event) => {
         setInitialDate(event.target.value);
+        if (event.target.value > endDate) {
+            setEndDate(getCurrentDate());
+            enqueueSnackbar("La fecha inicial debe ser menor que la fecha final.", {
+                variant: "warning",
+                anchorOrigin: {
+                    vertical: "top",
+                    horizontal: "right",
+                },
+            });
+        }
     };
 
     const handleEndDateChange = (event) => {
+        console.log(event.target.value);
+        console.log(initialDate);
         setEndDate(event.target.value);
     };
 
