@@ -12,6 +12,7 @@ const StateCompo = ({ children }) => {
                 console.log(json.error);
             } else {
                 // Set all data
+                console.log(resp.data);
                 setDataCurrency(resp.data);
             }
         });

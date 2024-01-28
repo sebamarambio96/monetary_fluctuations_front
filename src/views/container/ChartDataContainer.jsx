@@ -7,38 +7,24 @@ import { filterDataByDate, getCurrentDate, getDefaultStartDate } from "../../uti
 import { datachartFiller } from "../../utils/chart";
 import TableCurrency from "../components/TableCurrency";
 import LineChart from "../components/charts/LineChart";
+import { useCurrencyContext } from "../../context/currencyContext";
 
 const ChartDataContainer = () => {
-    const [dataChart, setDataChart] = useState();
+    const { dataCurrency } = useCurrencyContext();
     const [dataChartFiltered, setDataChartFiltered] = useState();
     const [initialDate, setInitialDate] = useState(getDefaultStartDate());
     const [endDate, setEndDate] = useState(getCurrentDate());
 
     useEffect(() => {
-        getCurrencyValues("dolar").then((resp) => {
-            if (resp.error) {
-                console.log(json.error);
-            } else {
-                // Set all data
-                setDataChart(resp.data);
-                // Set filtered data from 30 days ago for render
-                const filteredData = filterDataByDate(resp.data, initialDate, endDate);
-                setDataChartFiltered(datachartFiller(filteredData));
-                /* setLoading(false); */
-            }
-        });
-    }, []);
-
-    useEffect(() => {
-        if (dataChart) {
-            const filteredData = filterDataByDate(dataChart, initialDate, endDate);
+        if (dataCurrency) {
+            const filteredData = filterDataByDate(dataCurrency, initialDate, endDate);
             const newData = datachartFiller(filteredData);
             setDataChartFiltered({});
             setDataChartFiltered(newData);
         }
-    }, [initialDate, endDate]);
+    }, [dataCurrency, initialDate, endDate]);
 
-    // date handlers
+    // Date handlers
 
     const handleInitialDateChange = (event) => {
         setInitialDate(event.target.value);
