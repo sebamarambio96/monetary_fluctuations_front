@@ -1,9 +1,12 @@
 import { IconButton } from "@mui/material";
 import { Delete, Edit } from "@mui/icons-material";
 import { useCurrencyContext } from "../../../context/currencyContext";
+import { useSnackbar } from "notistack";
+import DeleteSweepIcon from "@mui/icons-material/DeleteSweep";
 
 const TableActions = ({ params, handleEditClick, editMode, setEditMode }) => {
     const { dataCurrency, setDataCurrency } = useCurrencyContext();
+    const { enqueueSnackbar } = useSnackbar();
 
     function deleteData(id) {
         // Set editMode to false to prevent visual bugs when deleting while in edit mode
@@ -12,6 +15,14 @@ const TableActions = ({ params, handleEditClick, editMode, setEditMode }) => {
         const updatedDataCurrency = dataCurrency.filter((record) => record.id !== id);
         // Update the state with the new array without the deleted object
         setDataCurrency(updatedDataCurrency);
+        // Alert
+        enqueueSnackbar("El registro se ha eliminado.", {
+            variant: "warning",
+            anchorOrigin: {
+                vertical: "top",
+                horizontal: "right",
+            },
+        });
     }
 
     return (

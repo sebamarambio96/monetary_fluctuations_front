@@ -1,7 +1,6 @@
 import React from "react";
-import { Container, Grid, Input, Typography, useTheme } from "@mui/material";
+import { Container, Grid, Input, useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
-import NavBar from "../layouts/NavBar";
 import { filterDataByDate, getCurrentDate, getDefaultStartDate } from "../../utils/date";
 import { dataChartFiller } from "../../utils/chart";
 import TableCurrency from "../components/tables/TableCurrency";
@@ -9,7 +8,7 @@ import LineChart from "../components/charts/LineChart";
 import { useCurrencyContext } from "../../context/currencyContext";
 import { dataTableFiller } from "../../utils/table";
 
-const ChartDataContainer = () => {
+const DashboardContainer = () => {
     const { dataCurrency } = useCurrencyContext();
     const [rows, setRows] = useState();
     const [dataChartFiltered, setDataChartFiltered] = useState();
@@ -42,8 +41,7 @@ const ChartDataContainer = () => {
 
     const theme = useTheme();
     return (
-        <Container maxWidth="false">
-            <NavBar></NavBar>
+        <Container maxWidth="false" style={{ marginTop: "2rem" }}>
             <Input
                 size="lg"
                 style={{ marginBottom: "1rem" }}
@@ -83,4 +81,4 @@ const ChartDataContainer = () => {
     );
 };
 
-export default ChartDataContainer;
+export default DashboardContainer;

@@ -64,7 +64,13 @@ const TableCurrency = ({ tableData = [] }) => {
         <Box
             sx={{
                 height: 470,
-                width: "100%",
+                width: {
+                    xs: "100%",
+                    sm: "50%",
+                    md: "40%",
+                    lg: "100%",
+                    xl: "100%",
+                },
             }}
         >
             <DataGrid

@@ -9,6 +9,8 @@ import "@fontsource/roboto/700.css";
 // Global Styles
 import "./index.css";
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
+import { SnackbarProvider } from "notistack";
+import { BrowserRouter } from "react-router-dom";
 
 const theme = createTheme({
     palette: {
@@ -19,14 +21,22 @@ const theme = createTheme({
         secondary: {
             main: "#7e4383",
         },
+        warning: {
+            main: "#d07f08",
+        },
+        error: {
+            main: "#d83a2f",
+        },
     },
 });
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-    <>
+    <BrowserRouter>
         <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <App />
+            <SnackbarProvider maxSnack={2} autoHideDuration={3000}>
+                <CssBaseline />
+                <App />
+            </SnackbarProvider>
         </ThemeProvider>
-    </>
+    </BrowserRouter>
 );
