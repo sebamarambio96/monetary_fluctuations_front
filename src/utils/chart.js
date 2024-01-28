@@ -13,7 +13,7 @@ const initialChartConfig = {
     ],
 };
 
-const datachartFiller = (dataApi) => {
+const dataChartFiller = (dataApi) => {
     // This object is repeated because exporting it may undergo changes and cause bugs.
     const newDataChart = {
         labels: [],
@@ -35,4 +35,4 @@ const datachartFiller = (dataApi) => {
     return newDataChart;
 };
 
-export { initialChartConfig, datachartFiller };
+export { initialChartConfig, dataChartFiller };

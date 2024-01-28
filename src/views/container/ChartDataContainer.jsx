@@ -1,27 +1,33 @@
 import React from "react";
 import { Container, Grid, Input, Typography, useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
-import { getCurrencyValues } from "../../services/ApiService";
 import NavBar from "../layouts/NavBar";
 import { filterDataByDate, getCurrentDate, getDefaultStartDate } from "../../utils/date";
-import { datachartFiller } from "../../utils/chart";
-import TableCurrency from "../components/TableCurrency";
+import { dataChartFiller } from "../../utils/chart";
+import TableCurrency from "../components/tables/TableCurrency";
 import LineChart from "../components/charts/LineChart";
 import { useCurrencyContext } from "../../context/currencyContext";
+import { dataTableFiller } from "../../utils/table";
 
 const ChartDataContainer = () => {
     const { dataCurrency } = useCurrencyContext();
+    const [rows, setRows] = useState();
     const [dataChartFiltered, setDataChartFiltered] = useState();
     const [initialDate, setInitialDate] = useState(getDefaultStartDate());
     const [endDate, setEndDate] = useState(getCurrentDate());
 
     useEffect(() => {
+        // If it hasn't been set, it doesn't run to avoid errors the first time.
         if (dataCurrency) {
             const filteredData = filterDataByDate(dataCurrency, initialDate, endDate);
-            const newData = datachartFiller(filteredData);
-            setDataChartFiltered({});
-            setDataChartFiltered(newData);
+            // New Chart Data
+            const newChartData = dataChartFiller(filteredData);
+            // New Table Data (rows)
+            const newTableData = dataTableFiller(filteredData);
+            setRows(newTableData);
+            setDataChartFiltered(newChartData);
         }
+        // Later, when the context has defined the variable, it is executed again to render.
     }, [dataCurrency, initialDate, endDate]);
 
     // Date handlers
@@ -67,7 +73,7 @@ const ChartDataContainer = () => {
             />
             <Grid container spacing={theme.spacing(4)}>
                 <Grid item xs={12} lg={4}>
-                    <TableCurrency></TableCurrency>
+                    <TableCurrency tableData={rows}></TableCurrency>
                 </Grid>
                 <Grid item xs={12} lg={8}>
                     <LineChart chartData={dataChartFiltered} style={{ marginBottom: "1rem" }}></LineChart>
