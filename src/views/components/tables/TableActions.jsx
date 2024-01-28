@@ -1,20 +1,17 @@
 import { IconButton } from "@mui/material";
 import { Delete, Edit } from "@mui/icons-material";
 import { useCurrencyContext } from "../../../context/currencyContext";
-/* import { useValue } from "../../../context/ContextProvider"; */
 
 const TableActions = ({ params, handleEditClick, editMode, setEditMode }) => {
     const { dataCurrency, setDataCurrency } = useCurrencyContext();
 
     function deleteData(id) {
+        // Set editMode to false to prevent visual bugs when deleting while in edit mode
         setEditMode(false);
-        // Filtra los objetos cuyo ID no coincide con el ID proporcionado
+        // Filter objects whose ID does not match the provided ID
         const updatedDataCurrency = dataCurrency.filter((record) => record.id !== id);
-        console.log(updatedDataCurrency);
-        // Actualiza el estado con el nuevo arreglo sin el objeto eliminado
+        // Update the state with the new array without the deleted object
         setDataCurrency(updatedDataCurrency);
-
-        console.log(`Dato con ID ${id} eliminado.`);
     }
 
     return (

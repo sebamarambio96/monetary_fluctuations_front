@@ -19,7 +19,7 @@ const getCurrencyValues = async (currencyName, startDate = "2023-01-01", endDate
         const json = await handleErrors(response);
         return json;
     } catch (error) {
-        console.log(error.message);
+        console.error(error.message);
         throw new Error(`There was an issue fetching currency values`);
     }
 };
