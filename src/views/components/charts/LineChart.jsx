@@ -4,7 +4,6 @@ import { Chart as ChartJS } from "chart.js/auto";
 import { initialChartConfig } from "../../../utils/chart";
 
 export default function LineChart({ chartData = initialChartConfig }) {
-    // Opciones del gráfico
     const options = {
         scales: {
             x: {

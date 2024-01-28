@@ -2,7 +2,6 @@ import { IconButton } from "@mui/material";
 import { Delete, Edit } from "@mui/icons-material";
 import { useCurrencyContext } from "../../../context/currencyContext";
 import { useSnackbar } from "notistack";
-import DeleteSweepIcon from "@mui/icons-material/DeleteSweep";
 
 const TableActions = ({ params, handleEditClick, editMode, setEditMode }) => {
     const { dataCurrency, setDataCurrency } = useCurrencyContext();
