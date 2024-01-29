@@ -22,6 +22,7 @@ https://currenflux.netlify.app/
 
 # Estructura y Componentes:
 A continuación, con el objetivo de facilitar la revisión del código resumiré la función que tiene cada uno de los principales carpetas y archivos.
+
 | Nombre              | Definición                                           |
 |-------------------|------------------------------------------------------|
 | **context**       | Directorio que contiene archivos donde se configura el contexto `currencyContext`. |
@@ -31,6 +32,7 @@ A continuación, con el objetivo de facilitar la revisión del código resumiré
 
 # Manejo de Estado:
 A continuación definiré los estados más importantes, para entender de mejor manera el proyecto:
+
 | Variable/Función        | Definición                                                                                                                |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------------|
 | **`rows`**               | Estado que almacena los datos para la tabla, utilizada por el componente `TableCurrency`.                                  |
@@ -47,7 +49,6 @@ A continuación definiré los estados más importantes, para entender de mejor m
 | **`setDataCurrency`**    | Función que actualiza el estado `dataCurrency`. Se utiliza para modificar los datos de la fluctuación de la moneda y generar re-renders.        |
 | **`enqueueSnackbar`**    | Función de `useSnackbar` que se utiliza para mostrar notificaciones (snackbars) en la interfaz de usuario.                |
 
-
 # Variables de entorno:
 En nuestro archivo ```.env``` solo tenemos una variable llamada ```VITE_API_URL``` la cúal contiene la URL base correspondiente a la API del backend. En caso de desplegar el servidor solo se deberá cambiar la URL base para que funcione en la nube.
 # Peticiones HTTP
@@ -57,6 +58,7 @@ ${import.meta.env.VITE_API_URL}/get-currency-values/${currencyName}/?start_date=
 ```
 En la cúal por motivos del desafío se deja por defecto la fecha de inicio en 2023-01-01 y la fecha actual como la final. De está manera obtendrá todos los datos disponibles de los años 2023 y 2024, para luego guardarlo en el estado ```dataCurrency```.
 # Dependencias:
+
 | Dependencia                  | Versión     | Descripción                                                                                   |
 |------------------------------|-------------|-----------------------------------------------------------------------------------------------|
 | `@emotion/react`             | ^11.11.3    | Biblioteca para CSS en JavaScript, utilizada para escribir estilos de manera dinámica en aplicaciones React.                       |
