@@ -24,6 +24,8 @@ const getCurrencyValues = async (currencyName, startDate = "2023-01-01", endDate
     }
 };
 
+//Extra functions
+
 // Function to get active years
 const getActiveYears = async () => {
     try {
@@ -48,8 +50,6 @@ const getActiveCurrency = async () => {
     }
 };
 
-//Extra functions
-
 // Function to get all interest data
 const getAllInterestData = async () => {
     try {
@@ -59,18 +59,6 @@ const getAllInterestData = async () => {
     } catch (error) {
         console.error(`Error fetching all interest data:`, error.message);
         throw new Error(`There was an issue fetching all interest data`);
-    }
-};
-
-// Function to save interest data
-const saveInterestData = async () => {
-    try {
-        const response = await fetch(`${import.meta.env.API_URL}/save-interest-data`);
-        const data = await handleErrors(response);
-        return data;
-    } catch (error) {
-        console.error(`Error saving interest data:`, error.message);
-        throw new Error(`There was an issue saving interest data`);
     }
 };
 
