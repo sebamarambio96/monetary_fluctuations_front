@@ -12,11 +12,11 @@ Para empezar, solo necesitamos iniciar el proyecto de forma local ejecutando est
 ```
 npm run dev
 ```
-Alternativamente puedes generar la versión estatica del proyecto con 
+Alternativamente puedes generar la versión estatica del proyecto con:
 ```
 npm run build
 ```
-Como otra opción, si tienes el servidor encendido localmente puedes acceder directamente a este despliegue en netlify: 
+Como otra opción, puedes acceder directamente a este despliegue en Netlify, el cual está configurado con la URL base del despliegue en Railway del backend, por lo cual puede funcionar libremente desde la nube.
 
 https://currenflux.netlify.app/ 
 
