@@ -56,7 +56,8 @@ Este proyecto accede a la API a través de la siguiente ruta:
 ```
 ${import.meta.env.VITE_API_URL}/get-currency-values/${currencyName}/?start_date=${startDate}&end_date=${endDate}
 ```
-En la cúal por motivos del desafío se deja por defecto la fecha de inicio en 2023-01-01 y la fecha actual como la final. De está manera obtendrá todos los datos disponibles de los años 2023 y 2024, para luego guardarlo en el estado ```dataCurrency```.
+En la cual, debido al desafío, se ha establecido por defecto la fecha de inicio en 2023-01-01 y la fecha actual como la final. De esta manera, se obtendrán todos los datos disponibles de los años 2023 y 2024, para luego guardarlos en el estado ```dataCurrency```.
+
 # Dependencias:
 
 | Dependencia                  | Versión     | Descripción                                                                                   |
