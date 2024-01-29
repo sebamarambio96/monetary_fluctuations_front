@@ -62,4 +62,4 @@ const getAllInterestData = async () => {
     }
 };
 
-export { getCurrencyValues, getActiveYears, getActiveCurrency, getAllInterestData, saveInterestData };
+export { getCurrencyValues, getActiveYears, getActiveCurrency, getAllInterestData };
